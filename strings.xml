@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Pokemon</string>
+    <string name="bulbasaur_select_message">You have selected Bulbasaur.</string>
+    <string name="charmander_select_message">You have selected Charmander.</string>
+    <string name="pikachu_select_message">You have selected Pikachu.</string>
+    <string name="squirtle_select_message">You have selected Squirtle.</string>
+    <string name="BulbName">I am Bulbasaur!</string>
+    <string name="CharName">I am Charmander!</string>
+    <string name="PikName">I am Pikachu!</string>
+    <string name="SquirtName">I am Squirtle!</string>
+</resources>
