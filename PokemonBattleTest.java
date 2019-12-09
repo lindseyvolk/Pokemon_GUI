@@ -3,17 +3,26 @@ import java.util.*;
 
 public class PokemonBattleTest {
     public static void main(String[] args) throws FileNotFoundException {
+		//PokemonList list = new PokemonList();
 		int health1 = 20;
 		int health2 = 20;
 		int turn = 0;
 		//Pokemon(String name, String type, int health, String[] moves)
 		//String[] bulbasaurMoves = new String[4];
 		
-		//Pokemon[] Player1 = new Pokemon[4];
+		Player Player1 = new Player(1);
+		Player Player2 = new Player(2);
+		
+		Player1.createRoster();
+		Player1.displayRoster();
+		Player2.createRoster();
 		
 		
-		Pokemon Bulbasaur = new Pokemon("Bulbasaur", "Grass", 20/*, bulbasaurMoves[]*/);
-		Pokemon Charmander = new Pokemon("Charmander", "Fire", 20/*, bulbasaurMoves[]*/);
+		/*
+		Pokemon Bulbasaur = new Pokemon("Bulbasaur", "Grass", 20);
+		Pokemon Charmander = new Pokemon("Charmander", "Fire", 20);
+		Player1[0] = Bulbasaur;
+		System.out.println(Player1[0].getName());
 		System.out.println(Bulbasaur.getName());
 		
 		Scanner input = new Scanner(System.in);
@@ -52,7 +61,7 @@ public class PokemonBattleTest {
 			System.out.println("Player 2 wins");
 		} else if (health2 <= 0) {
 			System.out.println("Player 1 wins");
-		}
+		}*/
 	
 	}
 }
