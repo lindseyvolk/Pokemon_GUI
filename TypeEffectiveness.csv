@@ -1,0 +1,5 @@
+Type,Water,Electric,Fire,Grass
+Water,1.0,2.0,0.5,2.0
+Electric,0.5,1.0,1.0,1.0
+Fire,2.0,1.0,1.0,0.5
+Grass,0.5,1.0,2.0,1.0
