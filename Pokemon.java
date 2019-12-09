@@ -44,6 +44,7 @@ public class Pokemon {
 	public void damage(double damage) { 
         damage = (100.0 - this.defense)/100 * damage;
         this.health = health - damage;
+        // System.out.println(this.health); // added for checking
 	}
 
     // EDIT: Added these methods

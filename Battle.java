@@ -5,8 +5,9 @@ import Pokemon;
 // Have a battle between two Pokemon
 
 public class Battle {
+    int turn = 0;
 
-    public static void fight(Pokemon p1, Pokemon p2) throws IOException { // maybe make it boolean so we know who wins?
+    public void fight(Pokemon p1, Pokemon p2) throws IOException { 
         String p1_type = p1.getType();
         String p2_type = p2.getType();
         
@@ -21,10 +22,10 @@ public class Battle {
         int column_index = 0;
         double damage_multiplier = 1.0;
 
-        BufferedReader reader = new BufferedReader(new FileReader("/Users/coopersalmon/Documents/TypeEffectiveness.csv"));
+        BufferedReader reader = new BufferedReader(new FileReader("/Users/coopersalmon/Documents/Fourth Year/Project/TypeEffectiveness.csv")); // Change file path for final 
         String row = reader.readLine();
         String[] data1 = row.split(",");
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 8; i++) {
             if (data1[i].equals(p1_type)) {
                 column_index = i;
             }
@@ -38,13 +39,14 @@ public class Battle {
         }
 
         reader.close();
+        System.out.print(damage_multiplier); // print for checking purposes 
 
         // double damage_multiplier = 2.0; // SET to 2.0 for example
         
         // Not sure how to do the move input though, so using String for input
         
         // Generic counter for keeping track of turns, even is P1, odd P2
-        int turn = 0;
+        int turn = 0; //initialized above
 
         Scanner input = new Scanner(System.in);
 
@@ -111,9 +113,16 @@ public class Battle {
         }
     }
 
+    public int getTurn() {
+        return turn;
+    }
+    
+    /* Main just for testing, need to comment out in 
     public static void main(String[] args) throws IOException {
-        Pokemon p1 = new Pokemon("Pikachu", "Electric", 20, 5, 3, 1);
-        Pokemon p2 = new Pokemon("Squirtle", "Water", 30, 4, 7, 2);
+        Pokemon p1 = new Pokemon("Pikachu", "Electric", 100, 15, 13, 1);
+        Pokemon p2 = new Pokemon("Squirtle", "Water", 100, 14, 18, 2);
         fight(p1, p2);
     }
+    */
+
 }
