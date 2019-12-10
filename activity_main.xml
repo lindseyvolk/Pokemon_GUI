@@ -115,14 +115,15 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="86dp"
-        android:layout_height="36dp"
+        android:id="@+id/readyButton"
+        android:layout_width="88dp"
+        android:layout_height="42dp"
         android:layout_marginBottom="80dp"
-        android:backgroundTint="#61FFFFFF"
+        android:backgroundTint="#4CAF50"
         android:enabled="false"
         android:text="Ready!"
         android:textAlignment="center"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
