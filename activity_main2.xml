@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#8BBE1B"
+    android:background="#FFFFFF"
     tools:context=".MainActivity">
 
     <TextView
@@ -16,7 +16,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="109dp"
         android:text="No Pokemon Here! Hit the back button to try again"
-        android:textColor="#FFFFFF"
+        android:textColor="#808080"
         android:textSize="15pt"
         android:textStyle="bold" />
 
