@@ -1,39 +1,37 @@
-package com.e.battle;
-
 import java.util.*;
 
 public class Pokemon {
-    String name;
-    String type;
+	String name;
+	String type;
     double health;
     double attack; // EDIT: added
     double defense; // EDIT: added
     int id; // EDIT: added
-
-    public Pokemon(String name, String type, double health, double attack, double defense, int id) { // added attack and defense
-        this.name = name;
-        this.type = type;
+    
+	public Pokemon(String name, String type, double health, double attack, double defense, int id) { // added attack and defense
+		this.name = name;
+		this.type = type;
         this.health = health;
         this.attack = attack;
         this.defense = defense;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public double getHealth() {
-        return health;
-    }
-
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public String getType() {
+		return type;
+	}
+	
+	public double getHealth() {
+		return health;
+	}
+    
     public double getAttack() {
         return attack;
     }
-
+    
     public double getDefense() {
         return defense;
     }
@@ -43,11 +41,11 @@ public class Pokemon {
     }
 
     // EDIT: Changed this method so we could factor in defense value
-    public void damage(double damage) {
+	public void damage(double damage) { 
         damage = (100.0 - this.defense)/100 * damage;
         this.health = health - damage;
         // System.out.println(this.health); // added for checking
-    }
+	}
 
     // EDIT: Added these methods
 

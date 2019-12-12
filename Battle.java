@@ -1,57 +1,140 @@
 import java.io.*;
 import java.util.*;
 import Pokemon;
+import Player;
 
 // Have a battle between two Pokemon
 
 public class Battle {
     int turn = 0;
+    Player p1;
+    Player p2;
+    boolean effective = false;
 
-    public void fight(Pokemon p1, Pokemon p2) throws IOException { 
-        String p1_type = p1.getType();
-        String p2_type = p2.getType();
-        
+    public Battle(Player p1, Player p2) {
+        this.p1 = p1;
+        this.p2 = p2;
+    }
+
+    public int getTurn() {
+        if (turn % 2 == 0) {
+            return 1;
+        }
+        else {
+            return 2;
+        }
+    }
+
+    public void Attack() throws IOException {
         /*
-        Here is where we will figure out types and effectivness
-        
-        Damage multiplier will be in terms of P1 against P2 
-        
-        double damage_multiplier = .... 
+        Here is where we will figure out types and effectiveness
+
+        Damage multiplier will be in terms of P1 against P2
+
+        double damage_multiplier = ....
         */
-        
+
         int column_index = 0;
         double damage_multiplier = 1.0;
 
-        BufferedReader reader = new BufferedReader(new FileReader("/Users/coopersalmon/Documents/Fourth Year/Project/TypeEffectiveness.csv")); // Change file path for final 
+        BufferedReader reader = new BufferedReader(new FileReader("/Users/coopersalmon/Documents/Fourth Year/Project/TypeEffectiveness.csv")); // Change file path for final
         String row = reader.readLine();
         String[] data1 = row.split(",");
         for (int i = 0; i < 8; i++) {
-            if (data1[i].equals(p1_type)) {
+            if (data1[i].equals(p1.getCurrentPokemon().getType())) {
                 column_index = i;
             }
         }
 
         while ((row = reader.readLine()) != null) {
             String[] data2 = row.split(",");
-            if (data2[0].equals(p2_type)) {
+            if (data2[0].equals(p2.getCurrentPokemon().getType())) {
                 damage_multiplier = Double.parseDouble(data2[column_index]);
             }
         }
 
         reader.close();
-        System.out.print(damage_multiplier); // print for checking purposes 
 
-        // double damage_multiplier = 2.0; // SET to 2.0 for example
-        
-        // Not sure how to do the move input though, so using String for input
-        
-        // Generic counter for keeping track of turns, even is P1, odd P2
-        int turn = 0; //initialized above
+        if (getTurn() == 1) {
+            double damage = damage_multiplier * p1.getCurrentPokemon().getAttack();
+            p2.getCurrentPokemon().damage(damage);
+            if (damage_multiplier > 1) {
+                System.out.print("It's super effective");
+                System.out.println();
+            }
+            else {
+                System.out.print("It's not super effective");
+                System.out.println();
+            }
+        }
+        else {
+            double damage = (1 / damage_multiplier) * p2.getCurrentPokemon().getAttack();
+            p1.getCurrentPokemon().damage(damage);
+            if (1 / damage_multiplier > 1) {
+                System.out.print("It's super effective");
+                System.out.println();
+            }
+            else {
+                System.out.print("It's not super effective");
+                System.out.println();
+            }
+        }
+        turn++;
+    }
 
-        Scanner input = new Scanner(System.in);
+    public void Defense() {
+        if (getTurn() == 1) {
+            p1.getCurrentPokemon().defUp();
+        }
+        else {
+            p2.getCurrentPokemon().defUp();
+        }
+        turn++;
+    }
 
-        while (p1.getHealth() > 0 && p2.getHealth() > 0) {
-			if (turn % 2 == 0) {
+    public void Raise() {
+        if (getTurn() == 1) {
+            p1.getCurrentPokemon().attUp();
+        }
+        else {
+            p2.getCurrentPokemon().attUp();
+        }
+        turn++;
+    }
+
+    public int Winner() {
+        if (p2.getRoster().get(1).getHealth() <= 0) { // revert back to 3
+            return 1;
+        }
+        else if (p1.getRoster().get(1).getHealth() <= 0) { // revert back to 3
+            return 2;
+        }
+        else {
+            return 0;
+        }
+    }
+
+    // Main just for testing logic of backend, comment out completely for final implementation
+    /*
+    public static void main(String[] args) throws IOException {
+        Player p1 = new Player(1);
+        Pokemon poke1 = new Pokemon("Pikachu", "Electric", 90, 18, 10, 25);
+        Pokemon poke2 = new Pokemon("Bulbasaur", "Grass", 110, 15, 13, 1);
+        p1.addToRoster(poke1);
+        p1.addToRoster(poke2);
+
+        Player p2 = new Player(2);
+        Pokemon poke3 = new Pokemon("Squirtle", "Water", 100, 17, 11, 7);
+        Pokemon poke4 = new Pokemon("Onix", "Rock", 120, 9, 15, 95);
+        p2.addToRoster(poke3);
+        p2.addToRoster(poke4);
+
+        Battle battle = new Battle(p1, p2);
+
+        do {
+            Scanner input = new Scanner(System.in);
+
+        	if (battle.getTurn() == 1) {
 				System.out.print("Player 1 move: ");
             } 
             else {
@@ -61,68 +144,26 @@ public class Battle {
             String move = input.nextLine();
             System.out.println();
 
-            if (turn % 2 == 0) {
-                if (move.equals("Attack")) {
-                    double damage = damage_multiplier * p1.getAttack();
-                    p2.damage(damage);
-                    if (damage_multiplier > 1) {
-                        System.out.print("It's super effective");
-                        System.out.println();
-                    }
-                    else {
-                        System.out.print("It's not super effective");
-                        System.out.println();
-                    }
-                }
-                else if (move.equals("Shield")) {
-                    p1.defUp();
-                }
-                else if (move.equals("Attack Up")) {
-                    p1.attUp();
-                }
+            if (move.equals("Attack")) {
+                battle.Attack();
             }
-            else {
-                if (move.equals("Attack")) {
-                    double damage = (1/damage_multiplier) * p2.getAttack();
-                    p1.damage(damage);
-                    if (1/damage_multiplier > 1) {
-                        System.out.print("It's super effective");
-                        System.out.println();
-                    }
-                    else {
-                        System.out.print("It's not super effective");
-                        System.out.println();
-                    }
-                }
-                else if (move.equals("Shield")) {
-                    p2.defUp();
-                }
-                else if (move.equals("Attack Up")) {
-                    p2.attUp();
-                }
+            if (move.equals("Raise")) {
+                battle.Raise();
             }
-          
-            // Increment for turns
-            turn++;
-        }
-        if (p1.getHealth() <= 0) {
-            System.out.println(p1.getName() + " lost!");
-        }
-        else if (p2.getHealth() <= 0) {
-            System.out.println(p2.getName() + " lost!");
-        }
-    }
+            if (move.equals("Defense")){
+                battle.Defense();
+            }
 
-    public int getTurn() {
-        return turn;
-    }
-    
-    /* Main just for testing, need to comment out in 
-    public static void main(String[] args) throws IOException {
-        Pokemon p1 = new Pokemon("Pikachu", "Electric", 100, 15, 13, 1);
-        Pokemon p2 = new Pokemon("Squirtle", "Water", 100, 14, 18, 2);
-        fight(p1, p2);
+        } while (battle.Winner() == 0);
+        
+        input.close();
+
+        if (battle.Winner() == 1) {
+            System.out.println("Player 1 wins");
+        }
+        if (battle.Winner() == 2) {
+            System.out.println("Player 2 wins");
+        }
     }
     */
-
 }
