@@ -8,5 +8,14 @@
     <string name="CharName">I am Charmander!</string>
     <string name="PikName">I am Pikachu!</string>
     <string name="SquirtName">I am Squirtle!</string>
+    <string name="BulbNewNameRed"><font fgcolor='#F55E52'>Bulbasaur chosen!</font></string>
+    <string name="CharNewNameRed"><font fgcolor='#F55E52'>Charmander chosen!</font></string>
+    <string name="PikNewNameRed"><font fgcolor='#F55E52'>Pikachu chosen!</font></string>
+    <string name="SquirtNewNameRed"><font fgcolor='#F55E52'>Squirtle chosen!</font></string>
+    <string name="BulbNewNameBlue"><font fgcolor='#03A9F4'>Bulbasaur chosen!</font></string>
+    <string name="CharNewNameBlue"><font fgcolor='#03A9F4'>Charmander chosen!</font></string>
+    <string name="PikNewNameBlue"><font fgcolor='#03A9F4'>Pikachu chosen!</font></string>
+    <string name="SquirtNewNameBlue"><font fgcolor='#03A9F4'>Squirtle chosen!</font></string>
+
     <string name="AttackName">Pow!</string>
 </resources>
