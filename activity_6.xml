@@ -17,14 +17,15 @@
         android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:layout_marginBottom="176dp"
-        android:text="You found a Snorlax!"
+        android:text="You found a Onix!"
         android:textSize="15pt"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imageButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.814" />
 
     <ImageButton
         android:id="@+id/imageButton"
@@ -35,12 +36,13 @@
         android:layout_marginTop="92dp"
         android:background="?android:selectableItemBackground"
         android:scaleType="fitCenter"
-        android:src="@drawable/p143"
+        android:src="@drawable/p95"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.06" />
 
     <TextView
         android:id="@+id/textView3"
@@ -51,7 +53,7 @@
         android:layout_marginStart="48dp"
         android:layout_marginLeft="48dp"
         android:layout_marginTop="288dp"
-        android:text="Snorlax has been added to your roster"
+        android:text="Onix has been added to your roster."
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

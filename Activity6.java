@@ -7,12 +7,12 @@ import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.WindowManager;
 
-public class Activity5 extends AppCompatActivity {
+public class Activity6 extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_5);
+        setContentView(R.layout.activity_6);
 
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -28,5 +28,6 @@ public class Activity5 extends AppCompatActivity {
         params.y = -20;
 
         getWindow().setAttributes(params);
+
     }
 }
