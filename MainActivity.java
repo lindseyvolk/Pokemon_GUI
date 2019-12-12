@@ -19,13 +19,6 @@ public class MainActivity extends AppCompatActivity {
     private int buttonState = 1;
 
 
-    private ImageButton button1;
-    private ImageButton button2;
-    private ImageButton button3;
-    private ImageButton button4;
-    private ImageButton button5;
-    private ImageButton button6;
-    private Button finish;
     //private ImageButton button16;
     private int b1_click = 0;
     private int b2_click = 0;
@@ -54,129 +47,138 @@ public class MainActivity extends AppCompatActivity {
         //String message = "No Pokemon here...try again";
 
 
-        button1 = (ImageButton) findViewById(R.id.button1);
+        ImageButton button1 = (ImageButton) findViewById(R.id.button1);
         button1.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (b1_click == 0) {
-                    //finish_game++;
+                    finish_game++;
                     openActivity1();
                 } else displayToast(getString(R.string.no_pokemon_message));
                 b1_click++;
+                if (finish_game == 6) {
+                    Button finish = (Button) findViewById(R.id.finish);
+                    finish.setEnabled(true);
+                    finish.setVisibility(View.VISIBLE);
+                }
             }
         });
 
 
-        button2 = (ImageButton) findViewById(R.id.button2);
+        ImageButton button2 = (ImageButton) findViewById(R.id.button2);
         button2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (b2_click == 0) {
+                    finish_game++;
                     openActivity2();
                 } else displayToast(getString(R.string.no_pokemon_message));
                 b2_click++;
+                if (finish_game == 6) {
+                    Button finish = (Button) findViewById(R.id.finish);
+                    finish.setEnabled(true);
+                    finish.setVisibility(View.VISIBLE);
+                }
 
             }
         });
 
 
-        button3 = (ImageButton) findViewById(R.id.button3);
+        ImageButton button3 = (ImageButton) findViewById(R.id.button3);
         button3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (b3_click == 0) {
-                    //finish_game++;
+                    finish_game++;
                     openActivity3();
                 } else displayToast(getString(R.string.no_pokemon_message));
                 b3_click++;
-                //button3.setVisibility(View.INVISIBLE);
-                //openActivity3();
+                if (finish_game == 6) {
+                    Button finish = (Button) findViewById(R.id.finish);
+                    finish.setEnabled(true);
+                    finish.setVisibility(View.VISIBLE);
+                }
             }
         });
 
 
-        button4 = (ImageButton) findViewById(R.id.button4);
+        ImageButton button4 = (ImageButton) findViewById(R.id.button4);
         button4.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (b4_click == 0) {
-                    //finish_game++;
+                    finish_game++;
                     openActivity4();
                 } else displayToast(getString(R.string.no_pokemon_message));
                 b4_click++;
+                if (finish_game == 6) {
+                    Button finish = (Button) findViewById(R.id.finish);
+                    finish.setEnabled(true);
+                    finish.setVisibility(View.VISIBLE);
+                }
             }
         });
 
-        button5 = (ImageButton) findViewById(R.id.button5);
+        ImageButton button5 = (ImageButton) findViewById(R.id.button5);
         button5.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
                 if (b5_click == 0) {
-                    //finish_game++;
+                    finish_game++;
                     openActivity5();
                 } else displayToast(getString(R.string.no_pokemon_message));
                 b5_click++;
+                if (finish_game == 6) {
+                    Button finish = (Button) findViewById(R.id.finish);
+                    finish.setEnabled(true);
+                    finish.setVisibility(View.VISIBLE);
+                }
             }
         });
 
-        button6 = (ImageButton) findViewById(R.id.button6);
+        ImageButton button6 = (ImageButton) findViewById(R.id.button6);
         button6.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                TextView textView8 = (TextView) findViewById(R.id.textView8);
                 if (b6_click == 0) {
-                    //finish_game++;
+                    finish_game++;
                     openActivity6();
                 } else displayToast(getString(R.string.no_pokemon_message));
                 b6_click++;
+                if (finish_game == 6) {
+                    Button finish = (Button) findViewById(R.id.finish);
+                    finish.setEnabled(true);
+                    finish.setVisibility(View.VISIBLE);
+                }
             }
         });
-
-        if (finish_game != 0) {
-            finish.setEnabled(true);
-        }
-
-        finish = (Button) findViewById(R.id.finish);
-        finish.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //do something
-            }
-        });
-
     }
 
 
     public void openActivity1() {
         Intent i = new Intent(getApplicationContext(), Activity1.class);
         startActivity(i);
-        finish_game++;
     }
 
 
     public void openActivity2() {
         Intent intent = new Intent(this, Activity2.class);
         startActivity(intent);
-        finish_game++;
 
     }
 
     public void openActivity3() {
         Intent intent = new Intent(this, Activity3.class);
         startActivity(intent);
-        finish_game++;
     }
 
     public void openActivity4() {
         Intent intent = new Intent(this, Activity4.class);
         startActivity(intent);
-        finish_game++;
     }
 
     public void openActivity5() {
         Intent intent = new Intent(this, Activity5.class);
         startActivity(intent);
-        finish_game++;
     }
 
     public void openActivity6() {
         Intent intent = new Intent(this, Activity6.class);
         startActivity(intent);
-        finish_game++;
     }
 }

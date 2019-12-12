@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="#E7E5E5"
     tools:context=".MainActivity">
 
     <TextView
@@ -21,6 +21,7 @@
         android:layout_marginLeft="16dp"
         android:scaleType="fitCenter"
         android:text="You found a Dratini!"
+        android:textAlignment="center"
         android:textSize="12pt"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -52,17 +53,21 @@
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="319dp"
+        android:layout_height="61dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="204dp"
         android:layout_marginBottom="92dp"
         android:text="Dratini has been added to your roster."
+        android:textAlignment="center"
+        android:textSize="8pt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageButton" />
+        app:layout_constraintTop_toTopOf="@+id/imageButton"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
