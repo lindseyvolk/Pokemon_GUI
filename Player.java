@@ -2,6 +2,7 @@ import java.util.*;
 
 public class Player {
 	int player;
+	int iterator = 0;
 	List<Pokemon> roster = new ArrayList<Pokemon>();
 	
 	Scanner input = new Scanner(System.in);
@@ -10,33 +11,42 @@ public class Player {
 		this.player = player;
 	}
 	
-	public void createRoster() {
+	/*public void createRoster() {
 		String choice;
 		for (int i = 0; i<4; i++) {
 			System.out.println("Choose pokemon number " + (i+1));
 			choice = input.nextLine();
 			roster.add(i, this.getPokemon(choice));
 		}
-	}
+	}*/
 	
 	public int getPlayerNum() {
 		return player;
 	}
 	
-	public void displayRoster() {
+	public List<Pokemon> getRoster() {
+		return roster;
+	}
+	
+	public Pokemon getCurrentPokemon() {
+		if (roster.get(iterator).getHealth() <= 0) {
+			iterator++;
+		}
+		return roster.get(iterator);
+	}
+	
+	/*public void displayRoster() {
 		for (int i = 0; i<4; i++) {
 			System.out.print("Pokemon number " + (i+1) + " is "); 
 			String name = roster.get(i).getName();
 			System.out.println(name);
 		}
-	}
+	}*/
 	
 	public void addToRoster(Pokemon pokemon) {
 		roster.add(pokemon);
 	}
-	//String name, String type, double health, double attack, double defense, int id
-	// 
-	public Pokemon getPokemon(String pokemonName) {
+	/*public Pokemon getPokemon(String pokemonName) {
 		if (pokemonName.equals("Bulbasaur")) {
 			Pokemon pokemon = new Pokemon("Bulbasaur", "Grass", 110, 15, 13, 1);
 			return pokemon;
@@ -60,10 +70,11 @@ public class Player {
 		}
 		else {
 			System.out.println("Something wrong");
-			Pokemon pokemon = new Pokemon();
+			Pokemon pokemon = new Pokemon("Nothing", "Nothing", 0, 0, 0, 0);
 			return pokemon;
 		}
-		
-	}
+		Pokemon pokemon = new Pokemon("Nothing", "Nothing", 0, 0, 0, 0);
+		return pokemon;
+	}*/
 
 }
