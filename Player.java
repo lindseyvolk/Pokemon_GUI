@@ -1,25 +1,27 @@
 import java.util.*;
-import Pokemon;
+//import Pokemon;
 
 public class Player {
     int player;
     int iterator;
 	List<Pokemon> roster = new ArrayList<Pokemon>();
 	
-	Scanner input = new Scanner(System.in);
+	//Scanner input = new Scanner(System.in);
 	
 	public Player(int player) {
 		this.player = player;
 	}
-	
+    
+    /*
 	public void createRoster() {
 		String choice;
 		for (int i = 0; i<4; i++) {
-			System.out.println("Choose pokemon number " + (i+1));
+			//System.out.println("Choose pokemon number " + (i+1));
 			choice = input.nextLine();
 			roster.add(i, this.getPokemon(choice));
 		}
-	}
+    }
+    */
 	
 	public int getPlayerNum() {
 		return player;
@@ -31,7 +33,8 @@ public class Player {
         }
         return roster.get(iterator);
     }
-	
+    
+    /*
 	public void displayRoster() {
 		for (int i = 0; i<4; i++) {
 			System.out.print("Pokemon number " + (i+1) + " is "); 
@@ -39,6 +42,7 @@ public class Player {
 			System.out.println(name);
 		}
     }
+    */
     
     public List<Pokemon> getRoster() {
         return roster;
@@ -46,10 +50,12 @@ public class Player {
 	
 	public void addToRoster(Pokemon pokemon) {
 		roster.add(pokemon);
-	}
+    }
+    
 	//String name, String type, double health, double attack, double defense, int id
 	// 
     
+    /*
     public Pokemon getPokemon(String pokemonName) {
 		if (pokemonName.equals("Bulbasaur")) {
 			Pokemon pokemon = new Pokemon("Bulbasaur", "Grass", 110, 15, 13, 1);
@@ -76,6 +82,6 @@ public class Player {
 			System.out.println("Something wrong");
 			Pokemon pokemon = new Pokemon();
 			return pokemon;
-		}
-	}
+        }
+        */
 }

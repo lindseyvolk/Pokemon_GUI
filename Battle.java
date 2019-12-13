@@ -1,7 +1,7 @@
 import java.io.*;
-import java.util.*;
-import Pokemon;
-import Player;
+import java.util.Scanner;
+// import Pokemon;
+// import Player;
 
 // Have a battle between two Pokemon
 
@@ -37,6 +37,7 @@ public class Battle {
         int column_index = 0;
         double damage_multiplier = 1.0;
 
+        
         BufferedReader reader = new BufferedReader(new FileReader("/Users/coopersalmon/Documents/Fourth Year/Project/TypeEffectiveness.csv")); // Change file path for final
         String row = reader.readLine();
         String[] data1 = row.split(",");
@@ -45,11 +46,10 @@ public class Battle {
                 column_index = i;
             }
         }
-
-        while ((row = reader.readLine()) != null) {
+        while ((row = reader.readLine()) != null) { // nextLine in place for row = reader.readNext()
             String[] data2 = row.split(",");
-            if (data2[0].equals(p2.getCurrentPokemon().getType())) {
-                damage_multiplier = Double.parseDouble(data2[column_index]);
+            if (data2[0].equals(p2.getCurrentPokemon().getType())) { // nextLine in place of data2
+                damage_multiplier = Double.parseDouble(data2[column_index]); // nextLine in place of data2
             }
         }
 
@@ -58,6 +58,7 @@ public class Battle {
         if (getTurn() == 1) {
             double damage = damage_multiplier * p1.getCurrentPokemon().getAttack();
             p2.getCurrentPokemon().damage(damage);
+            /* Printing for checking in IDE
             if (damage_multiplier > 1) {
                 System.out.print("It's super effective");
                 System.out.println();
@@ -66,10 +67,12 @@ public class Battle {
                 System.out.print("It's not super effective");
                 System.out.println();
             }
+            */
         }
         else {
             double damage = (1 / damage_multiplier) * p2.getCurrentPokemon().getAttack();
             p1.getCurrentPokemon().damage(damage);
+            /* Printing for checking in IDE
             if (1 / damage_multiplier > 1) {
                 System.out.print("It's super effective");
                 System.out.println();
@@ -78,6 +81,7 @@ public class Battle {
                 System.out.print("It's not super effective");
                 System.out.println();
             }
+            */
         }
         turn++;
     }
@@ -103,10 +107,10 @@ public class Battle {
     }
 
     public int Winner() {
-        if (p2.getRoster().get(1).getHealth() <= 0) { // revert back to 3
+        if (p2.getRoster().get(2).getHealth() <= 0) { // revert back to 3
             return 1;
         }
-        else if (p1.getRoster().get(1).getHealth() <= 0) { // revert back to 3
+        else if (p1.getRoster().get(2).getHealth() <= 0) { // revert back to 3
             return 2;
         }
         else {
@@ -120,14 +124,18 @@ public class Battle {
         Player p1 = new Player(1);
         Pokemon poke1 = new Pokemon("Pikachu", "Electric", 90, 18, 10, 25);
         Pokemon poke2 = new Pokemon("Bulbasaur", "Grass", 110, 15, 13, 1);
+        Pokemon poke3 = new Pokemon("Abra", "Psychic", 100, 14, 14, 63);
         p1.addToRoster(poke1);
         p1.addToRoster(poke2);
+        p1.addToRoster(poke3);
 
         Player p2 = new Player(2);
-        Pokemon poke3 = new Pokemon("Squirtle", "Water", 100, 17, 11, 7);
-        Pokemon poke4 = new Pokemon("Onix", "Rock", 120, 9, 15, 95);
-        p2.addToRoster(poke3);
+        Pokemon poke4 = new Pokemon("Squirtle", "Water", 100, 17, 11, 7);
+        Pokemon poke5 = new Pokemon("Onix", "Rock", 120, 9, 15, 95);
+        Pokemon poke6 = new Pokemon("Dratini", "Dragon", 60, 25, 6, 147);
         p2.addToRoster(poke4);
+        p2.addToRoster(poke5);
+        p2.addToRoster(poke6);
 
         Battle battle = new Battle(p1, p2);
 
@@ -144,19 +152,18 @@ public class Battle {
             String move = input.nextLine();
             System.out.println();
 
-            if (move.equals("Attack")) {
+            if (move.equals("a")) {
                 battle.Attack();
             }
-            if (move.equals("Raise")) {
+            if (move.equals("r")) {
                 battle.Raise();
             }
-            if (move.equals("Defense")){
+            if (move.equals("d")){
                 battle.Defense();
             }
 
         } while (battle.Winner() == 0);
         
-        input.close();
 
         if (battle.Winner() == 1) {
             System.out.println("Player 1 wins");
@@ -164,6 +171,6 @@ public class Battle {
         if (battle.Winner() == 2) {
             System.out.println("Player 2 wins");
         }
-    }
+    } 
     */
 }
