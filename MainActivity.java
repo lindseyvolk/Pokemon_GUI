@@ -11,24 +11,50 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+    int turn = 0;
+    Pokemon Pikachu = new Pokemon("Pikachu", "Electric", 90, 18, 10, 25);
+    Pokemon Bulbasaur = new Pokemon("Bulbasaur", "Grass", 110, 15, 13, 1);
+    Pokemon Charmander = new Pokemon("Charmander", "Fire", 80, 20, 9, 4);
+    Pokemon Squirtle = new Pokemon("Squirtle", "Water", 100, 17, 11, 7);
+
+    Pokemon player1Selection;
+    Pokemon player2Selection;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button catchButton = (Button)findViewById(R.id.catchButton);
-        catchButton.setOnClickListener(new View.OnClickListener() {
 
+        final Player player1 = (Player) getIntent().getExtras().getSerializable("player1");
+        final Player player2 = (Player) getIntent().getExtras().getSerializable("player2");
+
+
+
+        Button catchButton = (Button) findViewById(R.id.catchButton);
+        catchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openBattleArena();
+                //openBattleArena();
+
+                player1.roster.add(0,player1Selection);
+                player2.roster.add(0,player2Selection);
+                player1.roster.add(1, Bulbasaur);
+                player2.roster.add(1, Squirtle);
+
+                Intent intent = new Intent(getApplicationContext(), Battle_Arena_GUI.class);
+                Bundle extras = new Bundle();
+                extras.putSerializable("player1", player1);
+                extras.putSerializable("player2", player2);
+                intent.putExtras(extras);
+                startActivity(intent);
             }
         });
     }
 
-    String player1Selection = "";
-    String player2Selection = "";
+    //String player1Selection = "";
+    //String player2Selection = "";
 
     public void displayToast (String message)
     {
@@ -40,8 +66,12 @@ public class MainActivity extends AppCompatActivity {
         displayToast(getString(R.string.bulbasaur_select_message));
         Button player1ReadyButton = (Button) findViewById(R.id.player1ReadyButton);
         player1ReadyButton.setEnabled(true);
-        player1Selection = "Bulbasaur";
-        player2Selection = "Bulbasaur";
+        if (turn%2 == 0) {
+            player1Selection = Bulbasaur;
+        } else {
+            player2Selection = Bulbasaur;
+        }
+        turn++;
 
     }
 
@@ -50,8 +80,12 @@ public class MainActivity extends AppCompatActivity {
         displayToast(getString(R.string.charmander_select_message));
         Button player1ReadyButton = (Button) findViewById(R.id.player1ReadyButton);
         player1ReadyButton.setEnabled(true);
-        player1Selection = "Charmander";
-        player2Selection = "Charmander";
+        if (turn%2 == 0) {
+            player1Selection = Charmander;
+        } else {
+            player2Selection = Charmander;
+        }
+        turn++;
     }
 
     public void showPikachuClick (View view)
@@ -59,8 +93,12 @@ public class MainActivity extends AppCompatActivity {
         displayToast(getString(R.string.pikachu_select_message));
         Button player1ReadyButton = (Button) findViewById(R.id.player1ReadyButton);
         player1ReadyButton.setEnabled(true);
-        player1Selection = "Pikachu";
-        player2Selection = "Pikachu";
+        if (turn%2 == 0) {
+            player1Selection = Pikachu;
+        } else {
+            player2Selection = Pikachu;
+        }
+        turn++;
     }
 
     public void showSquirtleClick (View view)
@@ -68,15 +106,21 @@ public class MainActivity extends AppCompatActivity {
         displayToast(getString(R.string.squirtle_select_message));
         Button player1ReadyButton = (Button) findViewById(R.id.player1ReadyButton);
         player1ReadyButton.setEnabled(true);
-        player1Selection = "Squirtle";
-        player2Selection = "Squirtle";
+        if (turn%2 == 0) {
+            player1Selection = Squirtle;
+        } else {
+            player2Selection = Squirtle;
+        }
+        turn++;
     }
-
+/*
     public void openBattleArena ()
     {
         Intent intent = new Intent(this, Battle_Arena_GUI.class);
         startActivity(intent);
     }
+
+ */
 
     public void showPlayer2Button (View view) {
 
@@ -89,22 +133,22 @@ public class MainActivity extends AppCompatActivity {
         Button pikachuImage = (Button) findViewById(R.id.pikachuImage);
         Button squirtleImage = (Button) findViewById(R.id.squirtleImage);
 
-        if (player1Selection.equals("Bulbasaur")) {
+        if (player1Selection.equals(Bulbasaur)) {
             bulbasaurImage.setVisibility(View.INVISIBLE);
             bulbasaurImage.setEnabled(false);
             bulbImageName.setText(R.string.BulbNewNameBlue);
         }
-        if (player1Selection.equals("Charmander")) {
+        if (player1Selection.equals(Charmander)) {
             charmanderImage.setVisibility(View.INVISIBLE);
             charmanderImage.setEnabled(false);
             charImageName.setText(R.string.CharNewNameBlue);
         }
-        if (player1Selection.equals("Pikachu")) {
+        if (player1Selection.equals(Pikachu)) {
             pikachuImage.setVisibility(View.INVISIBLE);
             pikachuImage.setEnabled(false);
             pikImageName.setText(R.string.PikNewNameBlue);
         }
-        if (player1Selection.equals("Squirtle")) {
+        if (player1Selection.equals(Squirtle)) {
             squirtleImage.setVisibility(View.INVISIBLE);
             squirtleImage.setEnabled(false);
             squirtImageName.setText(R.string.SquirtNewNameBlue);
@@ -114,7 +158,9 @@ public class MainActivity extends AppCompatActivity {
         player2ReadyButton.setEnabled(true);
         Button player1ReadyButton = (Button) findViewById(R.id.player1ReadyButton);
         player1ReadyButton.setVisibility(View.INVISIBLE);
-        player2Selection.equals("");
+        //player2Selection.equals("");
+        //player1.roster.add(player1Selection);
+
     }
 
     public void showCatchButton(View view)
@@ -128,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
         Button pikachuImage = (Button)findViewById(R.id.pikachuImage);
         Button squirtleImage = (Button)findViewById(R.id.squirtleImage);
 
-        if (player2Selection.equals("Bulbasaur"))
+        if (player2Selection.equals(Bulbasaur))
         {
             bulbasaurImage.setVisibility(View.INVISIBLE);
             bulbasaurImage.setEnabled(false);
@@ -137,7 +183,7 @@ public class MainActivity extends AppCompatActivity {
             squirtleImage.setEnabled(false);
             bulbImageName.setText(R.string.BulbNewNameRed);
         }
-        if (player2Selection.equals("Charmander"))
+        if (player2Selection.equals(Charmander))
         {
             charmanderImage.setVisibility(View.INVISIBLE);
             bulbasaurImage.setEnabled(false);
@@ -146,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
             squirtleImage.setEnabled(false);
             charImageName.setText(R.string.CharNewNameRed);
         }
-        if (player2Selection.equals("Pikachu"))
+        if (player2Selection.equals(Pikachu))
         {
             pikachuImage.setVisibility(View.INVISIBLE);
             bulbasaurImage.setEnabled(false);
@@ -155,7 +201,7 @@ public class MainActivity extends AppCompatActivity {
             squirtleImage.setEnabled(false);
             pikImageName.setText(R.string.PikNewNameRed);
         }
-        if (player2Selection.equals("Squirtle"))
+        if (player2Selection.equals(Squirtle))
         {
             squirtleImage.setVisibility(View.INVISIBLE);
             bulbasaurImage.setEnabled(false);
@@ -168,5 +214,6 @@ public class MainActivity extends AppCompatActivity {
         catchButton.setEnabled(true);
         Button player2ReadyButton = (Button)findViewById(R.id.player2ReadyButton);
         player2ReadyButton.setVisibility(View.INVISIBLE);
+        //player2.roster.add(player2Selection);
     }
 }

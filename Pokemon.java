@@ -6,12 +6,12 @@ import java.util.*;
 public class Pokemon implements Serializable {
     String name;
     String type;
-    float health;
-    float attack; // EDIT: added
-    float defense; // EDIT: added
+    double health;
+    double attack; // EDIT: added
+    double defense; // EDIT: added
     int id; // EDIT: added
 
-    public Pokemon(String name, String type, float health, float attack, float defense, int id) { // added attack and defense
+    public Pokemon(String name, String type, double health, double attack, double defense, int id) { // added attack and defense
         this.name = name;
         this.type = type;
         this.health = health;
@@ -27,15 +27,15 @@ public class Pokemon implements Serializable {
         return type;
     }
 
-    public float getHealth() {
+    public double getHealth() {
         return health;
     }
 
-    public float getAttack() {
+    public double getAttack() {
         return attack;
     }
 
-    public float getDefense() {
+    public double getDefense() {
         return defense;
     }
 
@@ -44,7 +44,7 @@ public class Pokemon implements Serializable {
     }
 
     // EDIT: Changed this method so we could factor in defense value
-    public float damage(float damage) {
+    public double damage(double damage) {
         damage = (100 - this.defense)/100 * damage;
         this.health = health - damage;
         return this.health;
@@ -53,14 +53,14 @@ public class Pokemon implements Serializable {
 
     // EDIT: Added these methods
 
-    public float defUp() {
+    public double defUp() {
         this.defense = defense + 1; // maybe a different increment value/method of doing so
         //System.out.println(this.name + "'s defense rose!");
         //System.out.println();
         return this.defense;
     }
 
-    public float attUp() {
+    public double attUp() {
         this.attack = attack + 1; // maybe a different increment value/method of doing so
         //System.out.println(this.name + "'s attack rose!");
         //System.out.println();
