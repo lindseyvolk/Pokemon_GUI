@@ -14,6 +14,8 @@
         android:layout_marginTop="16dp"
         android:text="Quit"
         android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.006"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,12 +34,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
-        android:layout_marginBottom="568dp"
         android:text="TextView"
         android:textAlignment="center"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/player1" />
 
     <TextView
         android:id="@+id/pokemon1Combat"
@@ -53,10 +54,11 @@
 
     <Button
         android:id="@+id/attackButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginBottom="180dp"
+        android:layout_width="90dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginBottom="170dp"
+        android:background="#FF9800"
         android:text="Attack"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -66,7 +68,7 @@
         android:id="@+id/player2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="65dp"
         android:layout_marginEnd="44dp"
         android:text="Player 2"
         android:textAlignment="center"
@@ -77,9 +79,10 @@
     <Button
         android:id="@+id/raiseButton"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="36dp"
-        android:layout_marginBottom="180dp"
+        android:layout_height="45dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="164dp"
+        android:backgroundTint="#DE57F0"
         android:text="Raise CP"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -99,23 +102,23 @@
 
     <Button
         android:id="@+id/defenseButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="180dp"
+        android:layout_width="100dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="164dp"
+        android:backgroundTint="#03C4F4"
         android:text="Defend"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/raiseButton"
-        app:layout_constraintStart_toEndOf="@+id/attackButton"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintHorizontal_bias="0.558"
+        app:layout_constraintStart_toEndOf="@+id/attackButton" />
 
     <TextView
         android:id="@+id/player1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="65dp"
         android:text="Player 1"
         android:textAlignment="center"
         android:textSize="18sp"
@@ -126,13 +129,12 @@
         android:id="@+id/player2Pokemon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="556dp"
+        android:layout_marginEnd="44dp"
         android:text="TextView"
         android:textAlignment="center"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/player2" />
 
     <TextView
         android:id="@+id/pokemon1Health"
@@ -185,24 +187,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginBottom="108dp"
         android:text="Pokemon left:"
         android:textAlignment="center"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/attackButton" />
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/player2PokemonLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
         android:layout_marginEnd="36dp"
+        android:layout_marginBottom="108dp"
         android:text="Pokemon left:"
         android:textAlignment="center"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/raiseButton" />
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/player1NumAlive"
