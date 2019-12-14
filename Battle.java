@@ -103,10 +103,10 @@ public class Battle {
     }
 
     public int Winner() {
-        if (p2.roster.get(1).health <= 0) { // revert back to 3
+        if (p2.roster.get(3).health <= 0) { // revert back to 3
             return 1;
         }
-        if (p1.roster.get(1).health <= 0) { // revert back to 3
+        if (p1.roster.get(3).health <= 0) { // revert back to 3
             return 2;
         }
 

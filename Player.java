@@ -7,7 +7,7 @@ public class Player implements Serializable {
 //import Pokemon;
         int player;
         int iterator = 0;
-        int numAlive = 2;
+        int numAlive = 4;
         Pokemon currentPokemon;
 
         List<Pokemon> roster = new ArrayList<Pokemon>();

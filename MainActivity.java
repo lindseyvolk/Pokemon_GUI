@@ -36,14 +36,13 @@ public class MainActivity extends AppCompatActivity {
         catchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //openBattleArena();
 
                 player1.roster.add(0,player1Selection);
                 player2.roster.add(0,player2Selection);
-                player1.roster.add(1, Bulbasaur);
-                player2.roster.add(1, Squirtle);
+                //player1.roster.add(1, Bulbasaur);
+                //player2.roster.add(1, Squirtle);
 
-                Intent intent = new Intent(getApplicationContext(), Battle_Arena_GUI.class);
+                Intent intent = new Intent(getApplicationContext(), Catch.class);
                 Bundle extras = new Bundle();
                 extras.putSerializable("player1", player1);
                 extras.putSerializable("player2", player2);

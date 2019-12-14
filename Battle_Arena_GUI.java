@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.os.Handler;
+
 
 import org.w3c.dom.Text;
 
@@ -105,6 +107,18 @@ public class Battle_Arena_GUI extends AppCompatActivity {
                             player1Image.setImageResource(R.drawable.pikachu);
                         if (player1.roster.get(player1.iterator).name.equals("Squirtle"))
                             player1Image.setImageResource(R.drawable.squirtle);
+                        if (player1.roster.get(player1.iterator).name.equals("Mudkip"))
+                            player1Image.setImageResource(R.drawable.p258);
+                        if (player1.roster.get(player1.iterator).name.equals("Abra"))
+                            player1Image.setImageResource(R.drawable.p63);
+                        if (player1.roster.get(player1.iterator).name.equals("Onix"))
+                            player1Image.setImageResource(R.drawable.p95);
+                        if (player1.roster.get(player1.iterator).name.equals("Dratini"))
+                            player1Image.setImageResource(R.drawable.p147);
+                        if (player1.roster.get(player1.iterator).name.equals("Eevee"))
+                            player1Image.setImageResource(R.drawable.p133);
+                        if (player1.roster.get(player1.iterator).name.equals("Snorlax"))
+                            player1Image.setImageResource(R.drawable.p143);
 
 
                     ImageView player2Image = findViewById(R.id.player2Image);
@@ -116,6 +130,18 @@ public class Battle_Arena_GUI extends AppCompatActivity {
                             player2Image.setImageResource(R.drawable.pikachu);
                         if (player2.roster.get(player2.iterator).name.equals("Squirtle"))
                             player2Image.setImageResource(R.drawable.squirtle);
+                        if (player2.roster.get(player2.iterator).name.equals("Mudkip"))
+                            player2Image.setImageResource(R.drawable.p258);
+                        if (player2.roster.get(player2.iterator).name.equals("Abra"))
+                            player2Image.setImageResource(R.drawable.p63);
+                        if (player2.roster.get(player2.iterator).name.equals("Onix"))
+                            player2Image.setImageResource(R.drawable.p95);
+                        if (player2.roster.get(player2.iterator).name.equals("Dratini"))
+                            player2Image.setImageResource(R.drawable.p147);
+                        if (player2.roster.get(player2.iterator).name.equals("Eevee"))
+                            player2Image.setImageResource(R.drawable.p133);
+                        if (player2.roster.get(player2.iterator).name.equals("Snorlax"))
+                            player2Image.setImageResource(R.drawable.p143);
 
 
                     TextView player1Pokemon = findViewById(R.id.player1Pokemon);
@@ -126,6 +152,16 @@ public class Battle_Arena_GUI extends AppCompatActivity {
                     TextView player2Pokemon = findViewById(R.id.player2Pokemon);
                     player2Pokemon.setText(
                             player2.getCurrentPokemon().name
+                    );
+
+                    TextView player1Combat = findViewById(R.id.pokemon1Combat);
+                    player1Combat.setText(
+                            "CP: " + player1.getCurrentPokemon().attack
+                    );
+
+                    TextView player2Combat = findViewById(R.id.player2Combat);
+                    player2Combat.setText(
+                            "CP: " + player2.getCurrentPokemon().attack
                     );
                 }
 
@@ -141,6 +177,7 @@ public class Battle_Arena_GUI extends AppCompatActivity {
         raiseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                showCombatClick(v);
                 pokemonBattle.Raise();
                 TextView player1Combat = findViewById(R.id.pokemon1Combat);
                 player1Combat.setText(
@@ -168,6 +205,7 @@ public class Battle_Arena_GUI extends AppCompatActivity {
         defenseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                showDefendClick(v);
                 pokemonBattle.Defense();
                 TextView playerTurn = findViewById(R.id.playerTurn);
                 if (pokemonBattle.getTurn() == 1) {
@@ -234,6 +272,7 @@ public class Battle_Arena_GUI extends AppCompatActivity {
         if (player1.roster.get(0).name.equals("Squirtle"))
             player1Image.setImageResource(R.drawable.squirtle);
 
+
         ImageView player2Image = findViewById(R.id.player2Image);
         if (player2.roster.get(0).name.equals("Bulbasaur"))
             player2Image.setImageResource(R.drawable.bulbasaur);
@@ -245,26 +284,79 @@ public class Battle_Arena_GUI extends AppCompatActivity {
             player2Image.setImageResource(R.drawable.squirtle);
 
 
+
     }
 
-    public void displayToast(String message)
+    public void displayToast(String message, int duration)
     {
-        Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
+        final Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
         View view = toast.getView();
-        view.setBackgroundColor(Color.YELLOW);
+        view.setBackgroundColor(Color.parseColor("#FF9800"));
         TextView text = (TextView) view.findViewById(android.R.id.message);
-        text.setShadowLayer(0, 0, 0, Color.TRANSPARENT);
+        text.setTextColor(Color.BLACK);
+        text.setTextSize(36);
+        toast.show();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                toast.cancel();
+            }
+        },duration);
+    }
+
+    public void displayToast2(String message, int duration)
+    {
+        final Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
+        View view = toast.getView();
+        view.setBackgroundColor(Color.parseColor("#03C4F4"));
+        TextView text = (TextView) view.findViewById(android.R.id.message);
         text.setTextColor(Color.BLACK);
         text.setTextSize(18);
         toast.show();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                toast.cancel();
+            }
+        },duration);
+    }
+
+    public void displayToast3(String message, int duration)
+    {
+        final Toast toast = Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT);
+        View view = toast.getView();
+        view.setBackgroundColor(Color.parseColor("#DE57F0"));
+        TextView text = (TextView) view.findViewById(android.R.id.message);
+        text.setTextColor(Color.BLACK);
+        text.setTextSize(18);
+        toast.show();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                toast.cancel();
+            }
+        },duration);
     }
 
     public void showAttackClick(View view)
     {
-        displayToast(getString(R.string.AttackName));
+        displayToast(getString(R.string.AttackName), 500);
+
+    }
+    public void showDefendClick(View view)
+    {
+        displayToast2(getString(R.string.DefendName), 1000);
 
     }
 
+    public void showCombatClick(View view)
+    {
+        displayToast3(getString(R.string.CPName), 1000);
+
+    }
 
     public void openMainActivity() {
         Intent intent = new Intent(this,HomeScreen.class);
@@ -277,8 +369,6 @@ public class Battle_Arena_GUI extends AppCompatActivity {
         startActivity(intent);
 
     }
-
-
 
     public void openPlayer2WinActivity() {
         Intent intent = new Intent(this,Player2Winner.class);
